@@ -1,0 +1,11 @@
+name: ArbTest
+version: 1
+main: arbtest.ArbTest
+api-version: "26.3"
+description: Test-only helper for Arborist's tests. Never install it on a real server.
+commands:
+  arbtest:
+    permission: arbtest.use
+permissions:
+  arbtest.use:
+    default: op

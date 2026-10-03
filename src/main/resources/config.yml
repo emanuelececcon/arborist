@@ -1,0 +1,50 @@
+# Arborist: every natural leaf belongs to one tree, and falls when that tree's last log is gone,
+# even if it touches the leaves of another tree. Sneak while breaking a log with an axe to fell the whole tree.
+# Apply changes with /arborist reload.
+
+# How the crown of a cut tree comes down: a cascade from the trunk outwards.
+# A leaf falls after start-delay-ticks + ticks-per-step * (its distance from the trunk - 1) + 0..random-ticks.
+# 20 ticks = 1 second; the defaults bring a whole crown down in about 2-4 seconds.
+falling-leaves:
+  start-delay-ticks: 10
+  ticks-per-step: 10
+  random-ticks: 10
+
+# Leaves that no log keeps alive at all, which vanilla lets decay slowly (for example the leftovers of trees cut
+# before Arborist was installed), fall within a second as well.
+fast-decay:
+  enabled: true
+  min-delay-ticks: 4
+  max-delay-ticks: 16
+
+# Felling breaks every log of the tree at and above the broken one, as if the player broke each of them:
+# normal drops, 1 axe damage per log (Unbreaking applies). Logs below the broken one stay as a stump.
+# Only natural trees with their own leaves are felled, never logs placed by players.
+felling:
+  enabled: true
+  # true: sneak while breaking a log with an axe to fell the tree; without sneaking you break one log.
+  # false: every log broken with an axe fells the tree.
+  require-sneak: true
+  # Stop before the axe breaks; the logs not broken yet stay up.
+  protect-axe: true
+  # Creative players can fell trees too (no drops, as usual in creative).
+  creative: false
+
+effects:
+  # Leaf particles when a leaf falls.
+  particles: true
+  # The leaf break sound too. Off by default: with big crowns it gets noisy.
+  sound: false
+
+# A group of connected logs bigger than this is not treated as a tree (for example a log build):
+# it is never felled and its leaves only decay the vanilla way.
+max-tree-logs: 400
+
+# At most this many leaves fall per tick; the rest wait for the next tick.
+max-leaves-per-tick: 200
+
+# A partly cut tree remembers its leaves this long, also across restarts.
+forget-after-hours: 72
+
+# Worlds where Arborist does nothing, by name.
+disabled-worlds: []

@@ -1,0 +1,22 @@
+name: Arborist
+version: ${project.version}
+main: io.github.emanuelececcon.arborist.ArboristPlugin
+api-version: "26.3"
+description: Leaves belong to their own tree and fall when its last log is gone; sneak with an axe to fell a whole tree
+authors:
+  - emanuelececcon
+website: https://github.com/emanuelececcon/arborist
+
+commands:
+  arborist:
+    description: Show Arborist status or reload its config
+    usage: /arborist <status|reload>
+    permission: arborist.admin
+
+permissions:
+  arborist.fell:
+    description: Fell a whole tree by breaking one of its logs with an axe (while sneaking, by default)
+    default: true
+  arborist.admin:
+    description: Use /arborist status and reload
+    default: op
